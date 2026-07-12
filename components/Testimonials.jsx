@@ -2,19 +2,19 @@ import Reveal from "./Reveal";
 
 const TESTIMONIALS = [
   {
-    text: "TheEdge Media completely transformed how our brand communicates. The video they produced got 4 million organic views in the first week.",
+    text: "The Hedge Media completely transformed how our brand communicates. The video they produced got 4 million organic views in the first week.",
     author: "Rania Al-Hassan",
     role: "CMO · NovaTech",
     delay: undefined,
   },
   {
-    text: "Working with TheEdge is a different experience entirely. They don't just shoot — they think, they feel, they execute at a level I haven't seen elsewhere.",
+    text: "Working with The Hedge is a different experience entirely. They don't just shoot — they think, they feel, they execute at a level I haven't seen elsewhere.",
     author: "Khalid Mansour",
     role: "Founder · Bloom Brands",
     delay: ".12s",
   },
   {
-    text: "Our product launch film from TheEdge drove a 280% spike in traffic on launch day. The ROI was immediate and undeniable.",
+    text: "Our product launch film from The Hedge drove a 280% spike in traffic on launch day. The ROI was immediate and undeniable.",
     author: "Sara Nour",
     role: "Director of Marketing · PulseRetail",
     delay: ".24s",

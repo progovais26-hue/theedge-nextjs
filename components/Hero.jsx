@@ -98,7 +98,7 @@ export default function Hero() {
         <span className="typed-cursor" style={{ fontSize: "28px", height: ".9em" }}></span>
       </div>
       <p className="hero-desc">
-        TheEdge Media is a powerhouse content studio built for brands that refuse to be
+        The Hedge Media is a powerhouse content studio built for brands that refuse to be
         background noise. We film, cut, and deliver stories that move people.
       </p>
       <div className="hero-btns">

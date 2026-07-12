@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import ServicesMenu from "./ServicesMenu";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -14,17 +15,11 @@ export default function Navbar() {
   return (
     <nav id="nav" className={scrolled ? "scrolled" : ""}>
       <div className="nav-brand">
-        <div className="brand-icon">▶</div>
-        <span className="brand-name">
-          THE<span>EDGE</span>.{" "}
-          <span style={{ fontSize: "13px", opacity: 0.7, letterSpacing: "2px" }}>
-            MEDIA
-          </span>
-        </span>
+        <img src="/logo-full-white.png" alt="The Hedge Media" className="brand-logo" />
       </div>
       <div className="nav-links">
         <a href="#home">Home</a>
-        <a href="#services">Services</a>
+        <ServicesMenu />
         <a href="#work">Work</a>
         <a href="#process">Process</a>
         <a href="#contact" className="nav-cta">

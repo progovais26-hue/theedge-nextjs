@@ -17,9 +17,9 @@ const barlow = Barlow({
 });
 
 export const metadata = {
-  title: "TheEdge Media – Where Stories Ignite",
+  title: "The Hedge Media – Where Stories Ignite",
   description:
-    "TheEdge Media is a powerhouse content studio built for brands that refuse to be background noise. We film, cut, and deliver stories that move people.",
+    "The Hedge Media is a powerhouse content studio built for brands that refuse to be background noise. We film, cut, and deliver stories that move people.",
 };
 
 export default function RootLayout({ children }) {
