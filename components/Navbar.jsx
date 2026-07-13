@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import ServicesMenu from "./ServicesMenu";
 
 export default function Navbar() {
@@ -15,16 +16,18 @@ export default function Navbar() {
   return (
     <nav id="nav" className={scrolled ? "scrolled" : ""}>
       <div className="nav-brand">
-        <img src="/logo-full-white.png" alt="The Hedge Media" className="brand-logo" />
+        <Link href="/">
+          <img src="/logo-full-white.png" alt="The Hedge Media" className="brand-logo" />
+        </Link>
       </div>
       <div className="nav-links">
-        <a href="#home">Home</a>
+        <Link href="/#home">Home</Link>
         <ServicesMenu />
-        <a href="#work">Work</a>
-        <a href="#process">Process</a>
-        <a href="#contact" className="nav-cta">
+        <Link href="/#work">Work</Link>
+        <Link href="/#process">Process</Link>
+        <Link href="/#contact" className="nav-cta">
           Work With Us
-        </a>
+        </Link>
       </div>
     </nav>
   );

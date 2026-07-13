@@ -1,36 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-const SERVICES_MENU = [
-  {
-    category: "Digital Marketing & Technology",
-    items: [
-      "Social Media Management & Marketing",
-      "Website Development & UI/UX Design",
-      "AI Ads & Video Production",
-    ],
-  },
-  {
-    category: "Creative & Media Production",
-    items: [
-      "Video Production",
-      "Photography & Videography",
-      "Graphic Design & Video Editing",
-      "Studio Rental Services",
-    ],
-  },
-  {
-    category: "Events & Brand Solutions",
-    items: [
-      "Complete Event Management",
-      "Audio Visual Setup & Live Streaming",
-      "Brand & Company Profiling",
-      "Advertisement & Outdoor Campaign",
-      "Media & PR Services",
-    ],
-  },
-];
+import Link from "next/link";
+import { SERVICE_CATEGORIES } from "@/lib/services-data";
 
 export default function ServicesMenu() {
   const [open, setOpen] = useState(false);
@@ -69,18 +41,18 @@ export default function ServicesMenu() {
       </button>
 
       <div className="nav-dropdown-panel">
-        {SERVICES_MENU.map((col) => (
+        {SERVICE_CATEGORIES.map((col) => (
           <div className="nav-dropdown-col" key={col.category}>
             <div className="nav-dropdown-cat">{col.category}</div>
-            {col.items.map((item) => (
-              <a
-                key={item}
-                href="#services"
+            {col.services.map((service) => (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
                 className="nav-dropdown-item"
                 onClick={() => setOpen(false)}
               >
-                {item}
-              </a>
+                {service.title}
+              </Link>
             ))}
           </div>
         ))}
