@@ -55,7 +55,7 @@ export default function WorkPageClient({ videos }) {
             <div className="phstat-l">Views Generated</div>
           </div>
           <div className="phstat">
-            <div className="phstat-n">120+</div>
+            <div className="phstat-n">20+</div>
             <div className="phstat-l">Brand Partners</div>
           </div>
         </div>
