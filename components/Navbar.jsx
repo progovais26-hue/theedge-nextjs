@@ -14,21 +14,23 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav id="nav" className={scrolled ? "scrolled" : ""}>
-      <div className="nav-brand">
-        <Link href="/">
-          <img src="/logo-full-white.png" alt="The Hedge Media" className="brand-logo" />
-        </Link>
-      </div>
-      <div className="nav-links">
-        <Link href="/#home">Home</Link>
-        <ServicesMenu />
-        <Link href="/#work">Work</Link>
-        <Link href="/#process">Process</Link>
-        <Link href="/#contact" className="nav-cta">
-          Work With Us
-        </Link>
-      </div>
-    </nav>
+    <div className="nav-wrapper">
+      <nav id="nav" className={`nav-pill${scrolled ? " scrolled" : ""}`}>
+        <div className="nav-brand">
+          <Link href="/">
+            <img src="/logo-full-white.png" alt="The Hedge Media" className="brand-logo" />
+          </Link>
+        </div>
+        <div className="nav-links">
+          <Link href="/#home">Home</Link>
+          <ServicesMenu />
+          <Link href="/work">Work</Link>
+          <Link href="/#process">Process</Link>
+          <Link href="/#contact" className="nav-cta">
+            Work With Us
+          </Link>
+        </div>
+      </nav>
+    </div>
   );
 }

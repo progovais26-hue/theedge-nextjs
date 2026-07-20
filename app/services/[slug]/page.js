@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllServices, getServiceBySlug, SERVICE_CATEGORIES } from "@/lib/services-data";
+import { SERVICE_ICONS } from "@/lib/service-icons";
 
-import CustomCursor from "@/components/CustomCursor";
 import ParticleField from "@/components/ParticleField";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ServiceGallery from "@/components/ServiceGallery";
+import ServiceVideos from "@/components/ServiceVideos";
 
 export function generateStaticParams() {
   return getAllServices().map((s) => ({ slug: s.slug }));
@@ -28,9 +30,33 @@ export default function ServicePage({ params }) {
     (s) => s.category === service.category && s.slug !== service.slug
   );
 
+  const videoSectionCopy = {
+    "video-production": {
+      label: "OUR PORTFOLIO",
+      heading: "Brands That Trusted Us With Their Story",
+      subline: "From real estate launches to brand films — cinematic work that converts."
+    },
+    "complete-event-management": {
+      label: "EVENTS WE'VE COVERED",
+      heading: "Every Moment, Captured.",
+      subline: "High-energy coverage from corporate conferences to community workshops."
+    },
+    "social-media-management-marketing": {
+      label: "CONTENT WE'VE CREATED",
+      heading: "Scroll-Stopping Content, Real Results.",
+      subline: "Reels, animations, and branded content built to grow audiences."
+    },
+    "ai-ads-video-production": {
+      label: "AI WORK IN ACTION",
+      heading: "The Future of Ad Creative Is Here.",
+      subline: "AI-powered visuals produced at scale — fast, on-brand, and built to perform."
+    },
+  };
+
+  const copy = videoSectionCopy[params.slug] || {};
+
   return (
     <>
-      <CustomCursor />
       <ParticleField />
       <Navbar />
 
@@ -43,7 +69,12 @@ export default function ServicePage({ params }) {
             <span>/</span>
             <span style={{ color: "#f97316" }}>{service.category}</span>
           </div>
-          <div className="service-icon-badge">{service.icon}</div>
+          <div className="service-icon-badge">
+            {service.icon.map((key) => {
+              const { Icon, color } = SERVICE_ICONS[key];
+              return <Icon key={key} style={{ "--icon-color": color }} />;
+            })}
+          </div>
           <p className="sec-tag">{service.tagline}</p>
           <h1 className="sec-title" style={{ maxWidth: "820px" }}>
             {service.title}
@@ -51,6 +82,28 @@ export default function ServicePage({ params }) {
           <p className="service-summary">{service.summary}</p>
         </div>
       </section>
+
+      {service.images && (
+        <section className="service-gallery">
+          <div className="service-gallery-inner">
+            <p className="sec-tag">Selected Work</p>
+            <ServiceGallery images={service.images} />
+          </div>
+        </section>
+      )}
+
+      {service.videos?.length > 0 && (
+        <section id="service-videos" className="service-gallery">
+          <div className="service-gallery-inner">
+            <ServiceVideos
+              videos={service.videos}
+              sectionLabel={copy.label}
+              sectionHeading={copy.heading}
+              sectionSubline={copy.subline}
+            />
+          </div>
+        </section>
+      )}
 
       <section className="service-body">
         <div className="service-body-inner">
@@ -79,11 +132,14 @@ export default function ServicePage({ params }) {
           <div className="service-related-inner">
             <p className="sec-tag">More in {service.category}</p>
             <div className="service-related-grid">
-              {relatedServices.map((s) => (
-                <Link key={s.slug} href={`/services/${s.slug}`} className="service-related-card">
-                  {s.icon} &nbsp; {s.title}
-                </Link>
-              ))}
+              {relatedServices.map((s) => {
+                const { Icon, color } = SERVICE_ICONS[s.icon[0]];
+                return (
+                  <Link key={s.slug} href={`/services/${s.slug}`} className="service-related-card">
+                    <Icon style={{ color }} /> &nbsp; {s.title}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>

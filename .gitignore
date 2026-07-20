@@ -25,3 +25,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# raw source asset folders (not part of the deployed site)
+the hedge media portfolio/
+The Hedge/

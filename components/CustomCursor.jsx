@@ -27,7 +27,7 @@ export default function CustomCursor() {
     const shrink = () => cur.classList.remove("big");
 
     const targets = document.querySelectorAll(
-      "a,button,.svc,.work-card,.proc-item,.testi-card,.play-ring,.reel-play"
+      "a,button,.svc,.work-card,.proc-item,.testi-card"
     );
     targets.forEach((el) => {
       el.addEventListener("mouseenter", grow);

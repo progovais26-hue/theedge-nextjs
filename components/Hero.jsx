@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useScrollMute } from "@/lib/useScrollMute";
 
 const HERO_WORDS = ["BURNS.", "MOVES.", "CONVERTS.", "INSPIRES.", "IGNITES."];
 const SPEC_WORDS = [
@@ -14,6 +15,8 @@ const SPEC_WORDS = [
 export default function Hero() {
   const heroRef = useRef(null);
   const specRef = useRef(null);
+  const videoRef = useRef(null);
+  useScrollMute(videoRef);
 
   useEffect(() => {
     const hEl = heroRef.current;
@@ -80,43 +83,50 @@ export default function Hero() {
   return (
     <section id="home">
       <div className="grid-lines"></div>
-      <div className="hero-eyebrow">
-        <div className="eyebrow-line"></div>
-        <span className="eyebrow-text">Where Stories Ignite</span>
-      </div>
-      <h1 className="hero-h1">
-        <span className="h1-solid">WE CREATE</span>
-        <br />
-        <span className="h1-outline">CONTENT THAT</span>
-        <br />
-        <span className="h1-solid" ref={heroRef}></span>
-        <span className="typed-cursor"></span>
-      </h1>
-      <div className="hero-typed-wrap">
-        <span className="typed-label">Specializing in</span>
-        <span className="typed-word" ref={specRef}></span>
-        <span className="typed-cursor" style={{ fontSize: "28px", height: ".9em" }}></span>
-      </div>
-      <p className="hero-desc">
-        The Hedge Media is a powerhouse content studio built for brands that refuse to be
-        background noise. We film, cut, and deliver stories that move people.
-      </p>
-      <div className="hero-btns">
-        <a href="#work" className="btn-fire">
-          View Our Work
-        </a>
-        <a href="#contact" className="btn-ghost">
-          Start a Project
-        </a>
-      </div>
-      <div className="hero-deco">
-        <div
-          className="play-ring"
-          id="play-btn"
-          onClick={() => alert("🎬 Showreel coming soon!")}
-        >
-          <div className="play-icon"></div>
-          <span className="deco-label">Watch Showreel</span>
+      <div className="hero-inner">
+        <div className="hero-content">
+          <div className="hero-eyebrow">
+            <div className="eyebrow-line"></div>
+            <span className="eyebrow-text">Where Stories Ignite</span>
+          </div>
+          <h1 className="hero-h1">
+            <span className="h1-solid">WE CREATE</span>
+            <br />
+            <span className="h1-outline">CONTENT THAT</span>
+            <br />
+            <span className="h1-solid" ref={heroRef}></span>
+            <span className="typed-cursor"></span>
+          </h1>
+          <div className="hero-typed-wrap">
+            <span className="typed-label">Specializing in</span>
+            <span className="typed-word" ref={specRef}></span>
+            <span className="typed-cursor" style={{ fontSize: "28px", height: ".9em" }}></span>
+          </div>
+          <p className="hero-desc">
+            The Hedge Media is a powerhouse content studio built for brands that refuse to be
+            background noise. We film, cut, and deliver stories that move people.
+          </p>
+          <div className="hero-btns">
+            <a href="#work" className="btn-fire">
+              View Our Work
+            </a>
+            <a href="#contact" className="btn-ghost">
+              Start a Project
+            </a>
+          </div>
+        </div>
+        <div className="hero-deco">
+          <div className="hero-video">
+            <video
+              ref={videoRef}
+              src="/showreel/show-reel-1.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+            />
+          </div>
         </div>
       </div>
       <div className="hero-scroll">

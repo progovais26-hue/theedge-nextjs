@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { SERVICE_CATEGORIES } from "@/lib/services-data";
+import { SERVICE_ICONS } from "@/lib/service-icons";
 
 export default function ServicesMenu() {
   const [open, setOpen] = useState(false);
@@ -44,16 +45,20 @@ export default function ServicesMenu() {
         {SERVICE_CATEGORIES.map((col) => (
           <div className="nav-dropdown-col" key={col.category}>
             <div className="nav-dropdown-cat">{col.category}</div>
-            {col.services.map((service) => (
-              <Link
-                key={service.slug}
-                href={`/services/${service.slug}`}
-                className="nav-dropdown-item"
-                onClick={() => setOpen(false)}
-              >
-                {service.title}
-              </Link>
-            ))}
+            {col.services.map((service) => {
+              const { Icon, color } = SERVICE_ICONS[service.icon[0]];
+              return (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className="nav-dropdown-item"
+                  onClick={() => setOpen(false)}
+                >
+                  <Icon style={{ color }} className="nav-dropdown-icon" />
+                  {service.title}
+                </Link>
+              );
+            })}
           </div>
         ))}
       </div>
